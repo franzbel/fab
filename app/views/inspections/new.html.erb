@@ -1,0 +1,114 @@
+<div class="container">
+  <ul class="nav nav-tabs nav-justified">
+    <li class="active item-menu-catalogue"><%= link_to 'Inspeccion',new_inspection_path %></li>
+    <li class="item-menu-catalogue"><%= link_to 'Herramientas especiales',new_special_tool_path %></li>
+    <li class="item-menu-catalogue"><%= link_to 'Configuracion de trabajo','#' %></li>
+    <li class="item-menu-catalogue"><%= link_to 'Procedimiento','#' %></li>
+    <li class="item-menu-catalogue"><%= link_to 'Tareas finales ','#' %></li>
+  </ul>
+</div>
+<div class="container">
+  <%= form_for(Inspection.new, remote: true) do |f| %>
+      <div class="row">
+        <div class="col-md-4 selects-cont">
+          <div class="form-group dropdown-aircrafts">
+            <%= f.label :aircraft_id, 'Elegir una aeronave' %>
+            <%= select_tag 'aircraft_id', options_for_aircrafts, class: 'form-control aircraft-field' %>
+          </div>
+          <div class="form-group dropdown-systems">
+            <%= f.label :system_id, 'Sistema' %>
+            <!--contenido actualizado dinamicamente -->
+          </div>
+          <div class="form-group dropdown-components">
+            <%= f.label :component_id, 'Componente' %>
+            <!--contenido actualizado dinamicamente -->
+          </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+              <%= f.label :name, 'Nombre' %>
+              <%= f.text_field :name, class:'form-control' %>
+            </div>
+            <%= f.submit 'Guardar', class:'btn btn-primary' %>
+        </div>
+        <div class="col-md-4">
+          <p class="inspections-list">INSPECCION</p>
+        </div>
+      </div>
+  <% end %>
+</div>
+<script>
+  $(document).ready(function(){
+
+      $.ajax({
+          method: "GET",
+          url: "/aircrafts/"+$('#aircraft_id option:selected').val()+"/get_systems",
+          dataType:'script',
+          success: function(){
+              $('.dropdown-components select').remove();
+              $.ajax({
+                  method: "GET",
+                  url: "/systems/"+$('#system_id option:selected').val()+"/get_components",
+                  dataType:'script',
+                  success:function(){
+                      $.ajax({
+                          method: "GET",
+                          url: "/components/"+$('#component_id option:selected').val()+"/get_inspections_list",
+                          dataType:'script'
+                      })
+                  }
+              });
+          }
+      });
+      $('.selects-cont').on('change', 'select', function(event){
+          if($(this).hasClass('aircraft-field')){
+              $('.dropdown-systems select').remove();
+              $.ajax({
+                  method:'GET',
+                  url: "/aircrafts/"+$('option:selected', this).val()+"/get_systems",
+                  dataType:'script',
+                  success:function(){
+                      $('.dropdown-components select').remove();
+                      $.ajax({
+                          method:'GET',
+                          url: "/systems/"+$('#system_id option:selected').val()+"/get_components",
+                          dataType:'script',
+                          success:function(){
+                              $('.inspections-list p').remove();
+                              $.ajax({
+                                  method: "GET",
+                                  url: "/components/"+$('#component_id option:selected').val()+"/get_inspections_list",
+                                  dataType:'script'
+                              })
+                          }
+                      });
+                  }
+              });
+          }
+          if($(this).hasClass('system-field')){
+              $('.dropdown-components select').remove();
+              $.ajax({
+                  method:'GET',
+                  url: "/systems/"+$('option:selected', this).val()+"/get_components",
+                  dataType:'script',
+                  success:function(){
+                      $('.inspections-list p').remove();
+                      $.ajax({
+                          method: "GET",
+                          url: "/components/"+$('#component_id option:selected').val()+"/get_inspections_list",
+                          dataType:'script'
+                      })
+                  }
+              })
+          }
+          if($(this).hasClass('component-field')){
+             $('.inspections-list p').remove();
+             $.ajax({
+                method: "GET",
+                url: "/components/"+$('#component_id option:selected').val()+"/get_inspections_list",
+                dataType:'script'
+             })
+          }
+      });
+  });
+</script>

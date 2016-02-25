@@ -1,4 +1,30 @@
 Rails.application.routes.draw do
+  resources :catalogues
+  resources :aircrafts do
+    member do
+      get 'get_systems'
+      get 'get_systems_list'
+    end
+  end
+  resources :systems do
+    member do
+      get 'get_components'
+      get 'get_components_list'
+    end
+  end
+
+  resources :components do
+    member do
+      get 'get_inspections'
+      get 'get_inspections_list'
+    end
+  end
+  resources :inspections do
+    member do
+      get 'get_tools_list'
+    end
+  end
+  resources :special_tools
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,92 @@
+<div class="container">
+  <ul class="nav nav-tabs nav-justified">
+    <li class="item-menu-catalogue"><%= link_to 'Agregar aeronaves',new_aircraft_path %></li>
+    <li class="item-menu-catalogue"><%= link_to 'Agregar sistemas',new_system_path %></li>
+    <li class="active item-menu-catalogue"><%= link_to 'Agregar componentes',new_component_path %></li>
+  </ul>
+</div>
+<div class="container">
+  <%= form_for(Component.new, remote: true) do |f| %>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group prueba">
+            <%= f.label :aircraft_id, 'Elegir una aeronave' %>
+            <%= select_tag 'aircraft_id', options_for_aircrafts, class: 'form-control target' %>
+          </div>
+          <div class="form-group dropdown-systems">
+            <%= f.label :system_id, 'Sistema' %>
+            <!--contenido actualizado dinamicamente -->
+          </div>
+          <div class="form-group">
+            <%= f.label :name, 'Componente' %>
+            <%= f.text_field :name, class:'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit 'Agregar', class: 'btn btn-primary' %>
+          </div>
+        </div>
+        <div class="col-md-8">
+            <div class="components-list">LISTA DE COMPONENTES</div>
+        </div>
+      </div>
+  <% end %>
+</div>
+<script>
+  $(document).ready(function(){
+//      var ajaxGetSystems = function(){
+//          $.ajax({
+//              method: "GET",
+//              url: "/aircrafts/"+$('#aircraft_id option:selected').val()+"/get_systems",
+//              dataType:'script'
+//          });
+//      };
+//      var ajaxGetComponents = function(){
+//          $.ajax({
+//              method: "GET",
+//              url: "/systems/"+$('#system_id option:selected').val()+"/get_components",
+//              dataType:'script',
+//          });
+//      };
+      $.ajax({
+          method: "GET",
+          url: "/aircrafts/"+$('#aircraft_id option:selected').val()+"/get_systems",
+          dataType:'script',
+          success:function(){
+              $.ajax({
+                  method: "GET",
+                  url: "/systems/"+$('#system_id option:selected').val()+"/get_components_list",
+                  dataType:'script',
+              });
+          }
+      });
+
+      $('.target').change(function(){
+          $('.dropdown-systems select').remove();
+          $('.components-list p').remove();
+          $.ajax({
+              method: "GET",
+              url: "/aircrafts/"+$('select option:selected').val()+"/get_systems",
+              dataType:'script',
+              success: function(){
+                  $('.components-list select').remove();
+                  $.ajax({
+                      method: "GET",
+                      url: "/systems/"+$('#system_id option:selected').val()+"/get_components_list",
+                      dataType:'script'
+                  });
+              }
+          });
+      });
+      $('.dropdown-systems').change(function(){
+          $('.components-list p').remove();
+          $.ajax({
+              method: "GET",
+              url: "/systems/"+$('#system_id option:selected').val()+"/get_components_list",
+              dataType:'script'
+          });
+      });
+      $("#new_component").on("ajax:complete", function(){
+          $('#component_name').val('');
+      });
+  });
+</script>

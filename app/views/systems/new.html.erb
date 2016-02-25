@@ -1,0 +1,52 @@
+<div class="container">
+  <ul class="nav nav-tabs nav-justified">
+    <li class="item-menu-catalogue"><%= link_to 'Agregar aeronaves',new_aircraft_path %></li>
+    <li class="active item-menu-catalogue"><%= link_to 'Agregar sistemas',new_system_path %></li>
+    <li class="item-menu-catalogue"><%= link_to 'Agregar componentes',new_component_path %></li>
+  </ul>
+</div>
+<div class="container">
+  <%= form_for(@system, remote: true) do |f| %>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.label :aircraft_id, 'Numero de placa' %>
+            <%= select_tag 'aircraft_id', options_for_aircrafts, class: 'form-control aircraft-field' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :name, 'Sistema' %>
+            <%= f.text_field :name, class:'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit 'Agregar', class: 'btn btn-primary' %>
+          </div>
+        </div>
+        <div class="col-md-8 systems-list">
+          LISTA DE SISTEMAS
+
+        </div>
+      </div>
+  <% end %>
+</div>
+<script>
+  $(document).ready(function(){
+      $.ajax({
+          method: "GET",
+          url: "/aircrafts/"+$('select option:selected').val()+"/get_systems_list",
+          dataType:'script'
+      });
+
+      $( ".aircraft-field" ).change(function() {
+          $('.systems-list > p').remove();
+          $.ajax({
+              method: "GET",
+              url: "/aircrafts/"+$('select option:selected').val()+"/get_systems_list",
+              dataType:'script'
+          });
+          $('#system_name').val('');
+      });
+      $("#new_system").on("ajax:complete", function(){
+          $('#system_name').val('');
+      });
+  });
+</script>
