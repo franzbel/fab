@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  component_id: 
+  inspection_id: 1
+  time_limit: 1
+  unit: MyString
+  last_inspection: MyString
+
+two:
+  component_id: 
+  inspection_id: 1
+  time_limit: 1
+  unit: MyString
+  last_inspection: MyString

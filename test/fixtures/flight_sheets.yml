@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  departure_time: 2016-02-26 14:06:00
+  arrival_time: 2016-02-26 14:06:00
+  flight_time: 2016-02-26 14:06:00
+  aircraft_id: 
+
+two:
+  departure_time: 2016-02-26 14:06:00
+  arrival_time: 2016-02-26 14:06:00
+  flight_time: 2016-02-26 14:06:00
+  aircraft_id: 

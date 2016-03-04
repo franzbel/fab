@@ -11,22 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222190402) do
+ActiveRecord::Schema.define(version: 20160227222651) do
 
   create_table "aircrafts", force: :cascade do |t|
     t.string   "plate_number"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.time     "flight_hours", default: '2000-01-01 00:00:00'
   end
 
   create_table "components", force: :cascade do |t|
     t.string   "name"
     t.integer  "system_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.time     "flight_hours", default: '2000-01-01 00:00:00'
   end
 
   add_index "components", ["system_id"], name: "index_components_on_system_id"
+
+  create_table "first_inspections", force: :cascade do |t|
+    t.integer  "time_limit"
+    t.string   "unit_tl"
+    t.integer  "surplus"
+    t.string   "unit_sp"
+    t.string   "last_inspection"
+    t.integer  "component_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "inspection_id"
+  end
+
+  add_index "first_inspections", ["component_id"], name: "index_first_inspections_on_component_id"
+
+  create_table "flight_sheets", force: :cascade do |t|
+    t.time     "departure_time"
+    t.time     "arrival_time"
+    t.time     "flight_time"
+    t.integer  "aircraft_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "flight_sheets", ["aircraft_id"], name: "index_flight_sheets_on_aircraft_id"
 
   create_table "inspections", force: :cascade do |t|
     t.string   "name"
@@ -36,6 +63,20 @@ ActiveRecord::Schema.define(version: 20160222190402) do
   end
 
   add_index "inspections", ["component_id"], name: "index_inspections_on_component_id"
+
+  create_table "intermediate_inspections", force: :cascade do |t|
+    t.integer  "component_id"
+    t.integer  "inspection_id"
+    t.integer  "time_limit"
+    t.string   "unit_tl"
+    t.integer  "surplus"
+    t.string   "unit_sp"
+    t.string   "last_inspection"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "intermediate_inspections", ["component_id"], name: "index_intermediate_inspections_on_component_id"
 
   create_table "special_tools", force: :cascade do |t|
     t.string   "name"

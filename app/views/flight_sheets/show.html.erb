@@ -1,0 +1,9 @@
+<div class="container">
+  Hora de salida:
+  <%= @flight_sheet.departure_time %> <br/>
+
+  Hora de llegada:
+  <%= @flight_sheet.arrival_time %> <br/>
+  <%= link_to 'Editar', edit_flight_sheet_path(@flight_sheet) %> |
+  <%= link_to 'Nueva hoja de vuelo',  new_flight_sheet_path  %>
+</div>

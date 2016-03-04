@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">Hora de salida</div>
+    <div class="col-md-3">Hora de llegada</div>
+  </div>
+  <% @flight_sheets.each do |flight_sheet| %>
+    <div class="row">
+      <div class="col-md-3"><%= flight_sheet.departure_time %></div>
+      <div class="col-md-3"><%= flight_sheet.arrival_time %></div>
+      <div class="col-md-1"><%= link_to 'Editar', '#' %></div>
+      <div class="col-md-1"><%= link_to 'Mostrar', '#' %></div>
+      <div class="col-md-1"><%= link_to 'Eliminar', '#' %></div>
+    </div>
+  <% end %>
+  <%= link_to 'Nueva hoja de vuelo',  new_flight_sheet_path  %>
+</div>
