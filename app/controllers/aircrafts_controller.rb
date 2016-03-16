@@ -5,6 +5,7 @@ class AircraftsController < ApplicationController
   end
 
   def create
+    # render(:text => params)
     @aircraft = Aircraft.new(aircraft_params)
     respond_to do |format|
       if @aircraft.save
@@ -31,6 +32,6 @@ class AircraftsController < ApplicationController
 
   private
   def aircraft_params
-    params.require(:aircraft).permit(:plate_number)
+    params.require(:aircraft).permit(:plate_number, :beginning_time)
   end
 end

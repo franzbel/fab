@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'periodical_inspections/new'
+
   resources :catalogues
   resources :aircrafts do
     member do
@@ -30,7 +32,10 @@ Rails.application.routes.draw do
   resources :flight_sheets
 
   resources :first_inspections
-
+  resources :second_inspections
+  resources :twelve_months_inspections
+  resources :periodical_inspections
+  resources :scheduled_inspections
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

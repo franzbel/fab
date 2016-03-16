@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time_limit: 1
+  unit_tl: MyString
+  surplus: 1
+  unit_sp: MyString
+  last_inspection: MyString
+  inspection_id: 1
+  component_id: 
+  alert_before: 1
+  unit_ab: MyString
+
+two:
+  time_limit: 1
+  unit_tl: MyString
+  surplus: 1
+  unit_sp: MyString
+  last_inspection: MyString
+  inspection_id: 1
+  component_id: 
+  alert_before: 1
+  unit_ab: MyString

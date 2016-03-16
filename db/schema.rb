@@ -11,21 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227222651) do
+ActiveRecord::Schema.define(version: 20160313020351) do
 
   create_table "aircrafts", force: :cascade do |t|
     t.string   "plate_number"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.time     "flight_hours", default: '2000-01-01 00:00:00'
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.time     "flight_hours",   default: '2000-01-01 00:00:00'
+    t.date     "beginning_time"
   end
 
   create_table "components", force: :cascade do |t|
     t.string   "name"
     t.integer  "system_id"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.time     "flight_hours", default: '2000-01-01 00:00:00'
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.time     "flight_hours",   default: '2000-01-01 00:00:00'
+    t.date     "beginning_time"
   end
 
   add_index "components", ["system_id"], name: "index_components_on_system_id"
@@ -40,6 +42,9 @@ ActiveRecord::Schema.define(version: 20160227222651) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "inspection_id"
+    t.integer  "alert_before"
+    t.string   "unit_ab"
+    t.integer  "aircraft_id"
   end
 
   add_index "first_inspections", ["component_id"], name: "index_first_inspections_on_component_id"
@@ -74,9 +79,60 @@ ActiveRecord::Schema.define(version: 20160227222651) do
     t.string   "last_inspection"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "alert_before"
+    t.string   "unit_ab"
+    t.integer  "aircraft_id"
   end
 
   add_index "intermediate_inspections", ["component_id"], name: "index_intermediate_inspections_on_component_id"
+
+  create_table "periodical_inspections", force: :cascade do |t|
+    t.integer  "time_limit"
+    t.string   "unit_tl"
+    t.integer  "surplus"
+    t.string   "unit_sp"
+    t.string   "last_inspection"
+    t.integer  "inspection_id"
+    t.integer  "component_id"
+    t.integer  "alert_before"
+    t.string   "unit_ab"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "aircraft_id"
+  end
+
+  add_index "periodical_inspections", ["component_id"], name: "index_periodical_inspections_on_component_id"
+
+  create_table "scheduled_inspections", force: :cascade do |t|
+    t.integer  "component_id"
+    t.integer  "flight_hours"
+    t.integer  "start_at"
+    t.integer  "inspection_at"
+    t.integer  "finish_at"
+    t.boolean  "done",          default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "inspection"
+  end
+
+  add_index "scheduled_inspections", ["component_id"], name: "index_scheduled_inspections_on_component_id"
+
+  create_table "second_inspections", force: :cascade do |t|
+    t.integer  "time_limit"
+    t.string   "unit_tl"
+    t.integer  "surplus"
+    t.string   "unit_sp"
+    t.string   "last_inspection"
+    t.integer  "inspection_id"
+    t.integer  "component_id"
+    t.integer  "alert_before"
+    t.string   "unit_ab"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "aircraft_id"
+  end
+
+  add_index "second_inspections", ["component_id"], name: "index_second_inspections_on_component_id"
 
   create_table "special_tools", force: :cascade do |t|
     t.string   "name"
@@ -95,5 +151,22 @@ ActiveRecord::Schema.define(version: 20160227222651) do
   end
 
   add_index "systems", ["aircraft_id"], name: "index_systems_on_aircraft_id"
+
+  create_table "twelve_months_inspections", force: :cascade do |t|
+    t.integer  "time_limit"
+    t.string   "unit_tl"
+    t.integer  "surplus"
+    t.string   "unit_sp"
+    t.string   "last_inspection"
+    t.integer  "inspection_id"
+    t.integer  "component_id"
+    t.integer  "alert_before"
+    t.string   "unit_ab"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "aircraft_id"
+  end
+
+  add_index "twelve_months_inspections", ["component_id"], name: "index_twelve_months_inspections_on_component_id"
 
 end

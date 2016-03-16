@@ -1,0 +1,144 @@
+<style>
+.chart-container{
+    /*border: 1px solid red;*/
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+.progress{
+    /*border: 1px solid  green;*/
+    border-radius: 50%;
+}
+.time-limit{
+    /*border: 1px solid orange;*/
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*z-index: -1;*/
+}
+.progress-container1, .progress-container2 {
+    width: 100%;
+    height: 22px;
+    /*border: 1px solid #111;*/
+    background-color: #e0e0d1;
+    border-radius: 5px;
+}
+.progress-container1 div, .progress-container2 div {
+    height: 100%;
+    color: #fff;
+    text-align: right;
+    line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+    width: 0;
+    background-color: #2C5D8A;
+    border-radius: 5px;
+    /*background: linear-gradient(to right, rgb(255,255,0), rgb(255,0,0));*/
+    /*background-color: rgb(255,255,0);*/
+    /*background-color: green;*/
+}
+.inspections-container{
+    background-color: #F1F0EF;
+}
+.chart-row{
+    background-color: white;
+    margin: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+</style>
+<div class="container inspections-container">
+  <h3>INSPECCIONES PENDIENTES</h3>
+  <% @scheduled_inspections.each do |inspection| %>
+      <div class="row chart-row">
+        <div class="col-md-2">
+          <div class="chart-container">
+            <canvas class="progress" width="120" height="120"></canvas>
+            <canvas class="time-limit" width="100" height="100"></canvas>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <p>Tiempo Antes De La Inspeccion</p>
+          <%= content_tag(:div, '',:data => {:flight_hours => inspection.flight_hours,
+                                             :start_at=>inspection.start_at,
+                                             :inspection_at=>inspection.inspection_at,
+                                             :finish_at=>inspection.finish_at}, class: 'clase')%>
+          <div class="progress-container1">
+            <div></div>
+          </div>
+          <p>Tiempo Excedente</p>
+          <div class="progress-container2">
+            <div></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <strong>Aircraft: </strong><%= inspection.aircraft_name %> <br/>
+          <strong>Inspection: </strong><%= inspection.inspection_name %> <br/>
+          <strong>System: </strong><%= inspection.system_name %> <br/>
+          <strong>Component: </strong><%= inspection.component_name %> <br/>
+        </div>
+      </div>
+  <% end %>
+</div>
+
+<script>
+$(document).ready(function(){
+    var my_data = $('.clase');
+    $.each( my_data, function(i){
+                var clase_actual = $($('.clase')[i]);
+
+                function progress_bar1(percent, element) {
+                    var progressBarWidth = percent * element.width() / 100;
+                    element.find('div').animate({ width: progressBarWidth}, 500).html(Math.round(percent) + "% ");
+                }
+
+                function run_progress_bar(){
+                    var v1 = ( clase_actual.data('flight-hours') - clase_actual.data('start-at') ) * 100 / (clase_actual.data('inspection-at') - clase_actual.data('start-at'));
+                    var v2 = ( clase_actual.data('flight-hours') - clase_actual.data('inspection-at') ) * 100 / (clase_actual.data('finish-at') - clase_actual.data('inspection-at'));
+                    if (v1 <= 100){
+                        progress_bar1(v1, clase_actual.next() );
+                        progress_bar1(0, clase_actual.next().next().next() );
+                    }else{
+                        progress_bar1(100,  clase_actual.next() );
+                        progress_bar1(v2, clase_actual.next().next().next() );
+                    }
+                }
+                run_progress_bar();
+                var progress_data = [
+                    {
+                        value: (clase_actual.data('flight-hours') - clase_actual.data('start-at'))*100/(clase_actual.data('finish-at')-clase_actual.data('start-at')),
+                        label: 'Transcurrido',
+                        color: '#2C5D8A'
+                    },
+                    {
+                        value: 100 - (clase_actual.data('flight-hours') - clase_actual.data('start-at'))*100/(clase_actual.data('finish-at')-clase_actual.data('start-at')),
+                        label: 'Restante',
+                        color: '#e0e0d1'
+                    }
+                ];
+                var time_limit_data = [
+                    {
+                        value: (clase_actual.data('inspection-at') - clase_actual.data('start-at'))*100/(clase_actual.data('finish-at')-clase_actual.data('start-at')),
+                        label: 'Alerta',
+                        highlight: '#FF5A5E',
+                        color: '#ffff00'
+                    },
+                    {
+                        value: 100 - (clase_actual.data('inspection-at') - clase_actual.data('start-at'))*100/(clase_actual.data('finish-at')-clase_actual.data('start-at')),
+                        label: 'Excedente',
+                        highlight: '#FF5A5E',
+                        color: '#cc0000'
+                    }
+                ];
+
+                var ctx1 = document.getElementsByClassName('progress')[i].getContext('2d');
+                var progress_chart = new Chart(ctx1).Doughnut(progress_data,  {percentageInnerCutout : 70});
+
+                var ctx2 = document.getElementsByClassName('time-limit')[i].getContext('2d');
+                var time_limit_chart = new Chart(ctx2).Doughnut(time_limit_data,  {percentageInnerCutout : 40});
+
+        }
+    );
+});
+</script>
+

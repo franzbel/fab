@@ -14,15 +14,19 @@
             <%= select_tag 'aircraft_id', options_for_aircrafts, class: 'form-control target' %>
           </div>
           <div class="form-group dropdown-systems">
-            <%= f.label :system_id, 'Sistema' %>
+            <%= f.label :system_id, 'Elegir un sistema' %>
             <!--contenido actualizado dinamicamente -->
           </div>
           <div class="form-group">
-            <%= f.label :name, 'Componente' %>
+            <%= f.label :name, 'Crear componente' %>
             <%= f.text_field :name, class:'form-control' %>
           </div>
           <div class="form-group">
-            <%= f.submit 'Agregar', class: 'btn btn-primary' %>
+            <%= f.label :beginning_time, 'Inicio de operaciones' %>
+            <input type="text" class='datepicker form-control' id="component_beginning_time" name="component[beginning_time]">
+          </div>
+          <div class="form-group">
+            <%= f.submit 'Guardar', class: 'btn btn-primary' %>
           </div>
         </div>
         <div class="col-md-8">
@@ -33,6 +37,12 @@
 </div>
 <script>
   $(document).ready(function(){
+      $('.datepicker').datepicker({
+          format: "yyyy/mm/dd",
+          language: "es",
+          clearBtn: true,
+          autoclose: true
+      });
 //      var ajaxGetSystems = function(){
 //          $.ajax({
 //              method: "GET",
@@ -87,6 +97,7 @@
       });
       $("#new_component").on("ajax:complete", function(){
           $('#component_name').val('');
+          $('#component_beginning_time').val('');
       });
   });
 </script>

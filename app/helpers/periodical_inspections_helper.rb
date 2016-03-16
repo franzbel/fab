@@ -1,0 +1,2 @@
+module PeriodicalInspectionsHelper
+end

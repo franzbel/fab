@@ -55,6 +55,16 @@
               <%= select_tag :last_inspection, options_for_select([['Intermediate Inspection','Intermediate Inspection'],['Periodical Inspection','Periodical Inspection']]), class:'form-control' %>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-8 form-group">
+              <%= label_tag :alert_before, 'Avisarme antes de:' %>
+              <%= number_field_tag :alert_before,'', class: 'form-control' %>
+            </div>
+            <div class="col-md-4 form-group">
+              <%= label_tag :unit_ab, 'Unidad' %>
+              <%= select_tag :unit_ab, options_for_select([%w(Fh Fh), %w(Month Month), %w(Year Year)]), class:'form-control' %>
+            </div>
+          </div>
 
           <%= submit_tag 'Guardar', class:'btn btn-primary' %>
         </div>

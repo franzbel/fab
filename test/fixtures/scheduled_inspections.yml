@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  component_id: 
+  supplementary_check_50: false
+  supplementary_check_100: false
+  intermediate_inspection: false
+  twelve_month_inspection: false
+  periodical_inspection: false
+
+two:
+  component_id: 
+  supplementary_check_50: false
+  supplementary_check_100: false
+  intermediate_inspection: false
+  twelve_month_inspection: false
+  periodical_inspection: false

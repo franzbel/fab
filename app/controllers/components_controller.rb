@@ -31,7 +31,7 @@ class ComponentsController < ApplicationController
 
   private
   def component_params
-    params.require(:component).permit(:name)
+    params.require(:component).permit(:name, :beginning_time)
   end
 end
 

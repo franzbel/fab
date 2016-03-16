@@ -1,0 +1,212 @@
+<div class="container">
+  <ul class="nav nav-tabs nav-justified">
+    <li class="item-menu-catalogue"><%= link_to 'Inspeccion 50 horas','#' %></li>
+    <li class="active item-menu-catalogue"><%= link_to 'Inspeccion 100 horas', '#' %></li>
+    <li class="item-menu-catalogue"><%= link_to 'Inspeccion intermedia','#' %></li>
+    <li class="item-menu-catalogue"><%= link_to 'Inspeccion 12 meses','#' %></li>
+    <li class="item-menu-catalogue"><%= link_to 'Inspeccion periodica ','#' %></li>
+  </ul>
+</div>
+<div class="container">
+  <%= form_tag second_inspections_path do  %>
+      <div class="row">
+        <div class="col-md-4 selects-cont">
+          <div class="form-group dropdown-aircrafts">
+            <%= label_tag :aircraft_id, 'Elegir una aeronave' %>
+            <%= select_tag 'aircraft_id', options_for_aircrafts, class: 'form-control aircraft-field' %>
+          </div>
+          <div class="form-group dropdown-systems">
+            <%= label_tag :system_id, 'Sistema' %>
+            <!--contenido actualizado dinamicamente -->
+          </div>
+          <div class="form-group dropdown-components">
+            <%= label_tag :component_id, 'Componente' %>
+            <!--contenido actualizado dinamicamente -->
+          </div>
+          <div class="form-group dropdown-inspections">
+            <%= label_tag :inspection_id, 'Inspeccion' %>
+            <!--contenido actualizado dinamicamente -->
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col-md-8 form-group">
+              <%= label_tag :time_limit, 'Tiempo limite' %>
+              <%= number_field_tag :time_limit,'', class: 'form-control' %>
+            </div>
+            <div class="col-md-4 form-group">
+              <%= label_tag :unit_tl, 'Unidad' %>
+              <%= select_tag :unit_tl, options_for_select([%w(Fh Fh), %w(Month Month), %w(Year Year)]), class:'form-control' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8 form-group">
+              <%= label_tag :surplus, 'Excedente permitido' %>
+              <%= number_field_tag :surplus,'', class: 'form-control' %>
+            </div>
+            <div class="col-md-4 form-group">
+              <%= label_tag :unit_sp, 'Unidad' %>
+              <%= select_tag :unit_sp, options_for_select([%w(Fh Fh), %w(Month Month), %w(Year Year)]), class:'form-control' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 form-group">
+              <%= label_tag :last_inspection, 'Realizar despues de:' %>
+              <%= select_tag :last_inspection, options_for_select([['Supplementary Check 50 Fh','Supplementary Check 50 Fh'],['Supplementary Check 100 Fh','Supplementary Check 100 Fh'],['Periodical Inspection','Periodical Inspection']]), class:'form-control' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8 form-group">
+              <%= label_tag :alert_before, 'Avisarme antes de:' %>
+              <%= number_field_tag :alert_before,'', class: 'form-control' %>
+            </div>
+            <div class="col-md-4 form-group">
+              <%= label_tag :unit_ab, 'Unidad' %>
+              <%= select_tag :unit_ab, options_for_select([%w(Fh Fh), %w(Month Month), %w(Year Year)]), class:'form-control' %>
+            </div>
+          </div>
+          <%= submit_tag 'Guardar', class:'btn btn-primary' %>
+        </div>
+        <div class="col-md-4">
+          <p class="#tools-list"></p>
+        </div>
+      </div>
+  <% end %>
+</div>
+<script>
+    $(document).ready(function(){
+
+        $.ajax({
+            method: "GET",
+            url: "/aircrafts/"+$('#aircraft_id option:selected').val()+"/get_systems",
+            dataType:'script',
+            success: function(){
+                $('.dropdown-components select').remove();
+                $.ajax({
+                    method: "GET",
+                    url: "/systems/"+$('#system_id option:selected').val()+"/get_components",
+                    dataType:'script',
+                    success:function(){
+                        $.ajax({
+                            method: "GET",
+                            url: "/components/"+$('#component_id option:selected').val()+"/get_inspections_list",
+                            dataType:'script',
+                            success: function () {
+                                $.ajax({
+                                    method: "GET",
+                                    url: "/components/"+$('#component_id option:selected').val()+"/get_inspections",
+                                    dataType:'script',
+                                    success: function () {
+                                        $.ajax({
+                                            method: "GET",
+                                            url: "/inspections/"+$('#inspection_id option:selected').val()+"/get_tools_list",
+                                            dataType:'script'
+                                        });
+                                    }
+                                });
+                            }
+                        })
+                    }
+                });
+            }
+        });
+        $('.selects-cont').on('change', 'select', function(event){
+            if($(this).hasClass('aircraft-field')){
+                $('.dropdown-systems select').remove();
+                $.ajax({
+                    method:'GET',
+                    url: "/aircrafts/"+$('option:selected', this).val()+"/get_systems",
+                    dataType:'script',
+                    success:function(){
+                        $('.dropdown-components select').remove();
+                        $.ajax({
+                            method:'GET',
+                            url: "/systems/"+$('#system_id option:selected').val()+"/get_components",
+                            dataType:'script',
+                            success:function(){
+                                $('.inspections-list p').remove();
+                                $.ajax({
+                                    method: "GET",
+                                    url: "/components/"+$('#component_id option:selected').val()+"/get_inspections_list",
+                                    dataType:'script',
+                                    success: function () {
+                                        $('.dropdown-inspections select').remove();
+                                        $.ajax({
+                                            method: "GET",
+                                            url: "/components/"+$('#component_id option:selected').val()+"/get_inspections",
+                                            dataType:'script',
+                                            success: function () {
+                                                $('.tools-list p').remove();
+                                                $.ajax({
+                                                    method: "GET",
+                                                    url: "/inspections/"+$('#inspection_id option:selected').val()+"/get_tools_list",
+                                                    dataType:'script'
+                                                });
+                                            }
+                                        });
+                                    }
+                                })
+                            }
+                        });
+                    }
+                });
+            }
+            if($(this).hasClass('system-field')){
+                $('.dropdown-components select').remove();
+                $.ajax({
+                    method:'GET',
+                    url: "/systems/"+$('option:selected', this).val()+"/get_components",
+                    dataType:'script',
+                    success:function(){
+                        $('.inspections-list p').remove();
+                        $.ajax({
+                            method: "GET",
+                            url: "/components/"+$('#component_id option:selected').val()+"/get_inspections_list",
+                            dataType:'script',
+                            success: function () {
+                                $('.dropdown-inspections select').remove();
+                                $.ajax({
+                                    method: "GET",
+                                    url: "/components/"+$('#component_id option:selected').val()+"/get_inspections",
+                                    dataType:'script',
+                                    success: function () {
+                                        $('.tools-list p').remove();
+                                        $.ajax({
+                                            method: "GET",
+                                            url: "/inspections/"+$('#inspection_id option:selected').val()+"/get_tools_list",
+                                            dataType:'script'
+                                        });
+                                    }
+                                });
+                            }
+                        })
+                    }
+                })
+            }
+            if($(this).hasClass('component-field')){
+                $('.inspections-list p').remove();
+                $.ajax({
+                    method: "GET",
+                    url: "/components/"+$('#component_id option:selected').val()+"/get_inspections_list",
+                    dataType:'script',
+                    success: function () {
+                        $('.dropdown-inspections select').remove();
+                        $.ajax({
+                            method: "GET",
+                            url: "/components/"+$('#component_id option:selected').val()+"/get_inspections",
+                            dataType:'script',
+                            success: function () {
+                                $('.tools-list p').remove();
+                                $.ajax({
+                                    method: "GET",
+                                    url: "/inspections/"+$('#inspection_id option:selected').val()+"/get_tools_list",
+                                    dataType:'script'
+                                });
+                            }
+                        });
+                    }
+                })
+            }
+        });
+    });
+</script>

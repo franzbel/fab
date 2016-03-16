@@ -16,11 +16,11 @@
             <%= select_tag 'aircraft_id', options_for_aircrafts, class: 'form-control aircraft-field' %>
           </div>
           <div class="form-group dropdown-systems">
-            <%= f.label :system_id, 'Sistema' %>
+            <%= f.label :system_id, 'Elegir un sistema' %>
             <!--contenido actualizado dinamicamente -->
           </div>
           <div class="form-group dropdown-components">
-            <%= f.label :component_id, 'Componente' %>
+            <%= f.label :component_id, 'Elegir un componente' %>
             <!--contenido actualizado dinamicamente -->
           </div>
         </div>
@@ -109,6 +109,9 @@
                 dataType:'script'
              })
           }
+      });
+      $("#new_inspection").on("ajax:complete", function(){
+          $('#inspection_name').val('');
       });
   });
 </script>

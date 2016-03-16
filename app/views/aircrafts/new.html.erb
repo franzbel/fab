@@ -10,11 +10,16 @@
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <%= f.label :plate_number, 'Numero de placa' %>
+            <%= f.label :plate_number, 'Crear numero de matricula' %>
             <%= f.text_field :plate_number, class:'form-control' %>
           </div>
           <div class="form-group">
-            <%= f.submit 'Agregar', class: 'btn btn-primary' %>
+            <%= f.label :beginning_time, 'Inicio de operaciones' %>
+            <input type="text" class='datepicker form-control' id="aircraft_beginning_time" name="aircraft[beginning_time]">
+          </div>
+
+          <div class="form-group">
+            <%= f.submit 'Guardar', class: 'btn btn-primary' %>
           </div>
         </div>
         <div class="col-md-8 aircrafts-list">
@@ -26,3 +31,18 @@
       </div>
   <% end %>
 </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#new_aircraft").on("ajax:complete", function(){
+            $('#aircraft_plate_number').val('');
+            $('#aircraft_beginning_time').val('');
+        });
+
+        $('.datepicker').datepicker({
+            format: "yyyy/mm/dd",
+            language: "es",
+            clearBtn: true,
+            autoclose: true
+        });
+    });
+</script>
