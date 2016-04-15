@@ -3,23 +3,39 @@ class ScheduledInspection < ActiveRecord::Base
 
   after_initialize :filter
 
-  before_save :set_flight_hours
 
-  def set_flight_hours
-    self.flight_hours = (Component.find(self.component_id).flight_hours*60).to_i
+  # Si el componente que se inicializa tiene mas horas que las que se especifican en el campo finish_at de la tabla
+  # scheduled_inspections, el campo flight_hours de dichos registros debería pasar a ser igual a finish_at
+  def fill_flight_hours
+    flight_hours = Component.find(self.component_id).flight_hours*60
+    scheduled_inspections = ScheduledInspection.where('component_id==?',self.component_id)
+    unless scheduled_inspections.empty?
+      scheduled_inspections.each do |scheduled_inspection|
+        if flight_hours > scheduled_inspection.finish_at
+          scheduled_inspection.update(:flight_hours => scheduled_inspection.finish_at)
+        end
+      end
+    end
   end
+
+  # before_save :set_flight_hours
+
+  # def set_flight_hours
+  #   self.flight_hours = (Component.find(self.component_id).flight_hours*60).to_i
+  # end
 
   def filter
     if new_record?
-      if intermediate_inspection?
-        self.calculate_intermediate
-      end
+      # if intermediate_inspection?
+      #   self.calculate_intermediate
+      # end
       if supplementary_check_100?
         self.calculate_sc_100
       end
       if supplementary_check_50?
         self.calculate_sc_50
       end
+      fill_flight_hours
     end
   end
 
@@ -52,9 +68,18 @@ class ScheduledInspection < ActiveRecord::Base
       time_limit = inspection.time_limit
       alert_before = inspection.alert_before
       surplus = inspection.surplus
-      if flight_hours % time_limit >= time_limit - alert_before || flight_hours % time_limit <= surplus
+      if flight_hours >= (flight_hours /  time_limit + 1) * time_limit - alert_before
         return true
       end
+      if flight_hours >= time_limit
+        if flight_hours <= (flight_hours / time_limit) * time_limit + surplus
+          return true
+        end
+      end
+
+      # if flight_hours % time_limit >= time_limit - alert_before || flight_hours % time_limit <= surplus
+      #   return true
+      # end
     end
     false
   end
@@ -68,41 +93,39 @@ class ScheduledInspection < ActiveRecord::Base
     from_index = (flight_hours - (surplus + alert_before)).to_i
     to_index = (flight_hours + (surplus + alert_before)).to_i
     # new record
-    if self.new_row_sc_100?
+    if new_row_sc_100?
+      # last_inspection = ScheduledInspection.where('component_id == ? AND inspection==?', self.component_id, self.inspection).last
+      # unless last_inspection.nil?
+      #   last_inspection.update(:flight_hours => last_inspection.finish_at)
+      # end
       (from_index..to_index).each { |value|
         if value % time_limit == 0
           self.inspection_at= value
           self.start_at= value - alert_before
           self.finish_at= value + surplus
           self.inspection = 'sc_100'
+          self.flight_hours = flight_hours
           self.save
           return
         end
       }
     else
-      ScheduledInspection.where('component_id==?',self.component_id).last.update(flight_hours: 0)
+      ScheduledInspection.where('component_id==?',self.component_id).last.update(flight_hours: flight_hours)
     end
   end
   def new_row_sc_100?
-    # si el componente existe
-    unless Component.where('id==?', self.component_id).empty?
-      # si el componente tiene una inspección de 50 asociada
-      unless Component.find(self.component_id).second_inspections.first.nil?
-        # si existe una inspección calculada para el componente (una fila en scheduled_inspections)
-        unless ScheduledInspection.find_by_component_id(self.component_id).nil?
-          if (Component.find(self.component_id).flight_hours*60).to_i > ScheduledInspection.where('component_id==?',self.component_id).last.finish_at
-            return true
-          else
-            return false
-          end
-        end
-        # la inspección es nueva y se necesita una nueva fila
+    # si existe una inspección calculada para el componente (una fila en scheduled_inspections)
+    unless ScheduledInspection.find_by_component_id(self.component_id).nil?
+      if (Component.find(self.component_id).flight_hours*60).to_i > ScheduledInspection.where('component_id==?',self.component_id).last.finish_at
         return true
+      else
+        return false
       end
-
     end
-    false
+    # la inspección es nueva y se necesita una nueva fila
+    true
   end
+
   # OJO: Estamos suponiendo una sola inspección
   def supplementary_check_50?
     component = Component.find(self.component_id)
@@ -112,9 +135,17 @@ class ScheduledInspection < ActiveRecord::Base
       time_limit = inspection.time_limit
       alert_before = inspection.alert_before
       surplus = inspection.surplus
-      if flight_hours % time_limit >= time_limit - alert_before || flight_hours % time_limit <= surplus
+      if flight_hours >= (flight_hours /  time_limit + 1) * time_limit - alert_before
         return true
       end
+      if flight_hours >= time_limit
+        if flight_hours <= (flight_hours / time_limit) * time_limit + surplus
+          return true
+        end
+      end
+      # if flight_hours % time_limit >= time_limit - alert_before || flight_hours % time_limit <= surplus
+      #   return true
+      # end
     end
     false
   end
@@ -129,42 +160,41 @@ class ScheduledInspection < ActiveRecord::Base
     from_index = (flight_hours - (surplus + alert_before)).to_i
     to_index = (flight_hours + (surplus + alert_before)).to_i
     # new record
-    if self.new_row_sc_50?
+    if new_row_sc_50?
+      # last_inspection = ScheduledInspection.where('component_id == ? AND inspection==?', self.component_id, self.inspection).last
+      # unless last_inspection.nil?
+      #   last_inspection.update(:flight_hours => last_inspection.finish_at)
+      # end
       (from_index..to_index).each { |value|
         if value % time_limit == 0
           self.inspection_at= value
           self.start_at= value - alert_before
           self.finish_at= value + surplus
           self.inspection = 'sc_50'
+          self.flight_hours = flight_hours
           self.save
           return
         end
       }
     else
-       ScheduledInspection.where('component_id==?',self.component_id).last.update(flight_hours: 0)
+       ScheduledInspection.where('component_id==?',self.component_id).last.update(flight_hours: flight_hours)
     end
   end
 
   # devuelve falso cuando no es necesaria una nueva fila
   # devuelve verdadero cuando es necesaria una nueva fila
   def new_row_sc_50?
-    # si el componente existe
-    unless Component.where('id==?', self.component_id).empty?
-      # si el componente tiene una inspección de 50 asociada
-      unless Component.find(self.component_id).first_inspections.first.nil?
-        # si existe una inspección calculada para el componente (una fila en scheduled_inspections)
-        unless ScheduledInspection.find_by_component_id(self.component_id).nil?
-          if (Component.find(self.component_id).flight_hours*60).to_i > ScheduledInspection.where('component_id==?',self.component_id).last.finish_at
-            return true
-          else
-            return false
-          end
-        end
-        # la inspección es nueva y se necesita una nueva fila
-        return true
+    # si existe una inspección anterior calculada para el componente (una fila en scheduled_inspections)
+    unless ScheduledInspection.find_by_component_id(self.component_id).nil?
+      # si las horas del componente es mayor al momento de la ultima inspeccion del componente
+      if (Component.find(self.component_id).flight_hours*60).to_i > ScheduledInspection.where('component_id==?',self.component_id).last.finish_at
+        return true   # nueva fila
+      else
+        return false
       end
     end
-    false
+    # la inspección es nueva y se necesita una nueva fila
+    true
   end
 
 

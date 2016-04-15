@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="Rails fab: development" uuid="13129030-3a2e-4edf-9bad-a73bf07dae03" />
-    <data-source name="Rails fab: test" uuid="98af3c7d-143e-4193-874e-70b1ff77fbe4" />
+    <data-source name="development" uuid="f2c76435-c8ec-40f1-b07d-e2b3cbff0379" />
   </component>
 </project>

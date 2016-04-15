@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   resources :twelve_months_inspections
   resources :periodical_inspections
   resources :scheduled_inspections
+  resources :deteriorating_items
+  resources :non_deteriorating_items
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

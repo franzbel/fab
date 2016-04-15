@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  best_before: 1
+  minimum_quantity: 1.5
+  deteriorating_item_id: 
+
+two:
+  best_before: 1
+  minimum_quantity: 1.5
+  deteriorating_item_id: 

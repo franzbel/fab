@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313020351) do
+ActiveRecord::Schema.define(version: 20160329001855) do
 
   create_table "aircrafts", force: :cascade do |t|
     t.string   "plate_number"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20160313020351) do
     t.time     "flight_hours",   default: '2000-01-01 00:00:00'
     t.date     "beginning_time"
   end
+
+  create_table "alerts", force: :cascade do |t|
+    t.integer  "best_before"
+    t.float    "minimum_quantity"
+    t.integer  "deteriorating_item_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "alerts", ["deteriorating_item_id"], name: "index_alerts_on_deteriorating_item_id"
 
   create_table "components", force: :cascade do |t|
     t.string   "name"
@@ -31,6 +41,23 @@ ActiveRecord::Schema.define(version: 20160313020351) do
   end
 
   add_index "components", ["system_id"], name: "index_components_on_system_id"
+
+  create_table "deteriorating_items", force: :cascade do |t|
+    t.string   "name"
+    t.string   "unit"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.text     "specification"
+  end
+
+  create_table "expiration_dates", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "quantity_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "expiration_dates", ["quantity_id"], name: "index_expiration_dates_on_quantity_id"
 
   create_table "first_inspections", force: :cascade do |t|
     t.integer  "time_limit"
@@ -103,6 +130,15 @@ ActiveRecord::Schema.define(version: 20160313020351) do
 
   add_index "periodical_inspections", ["component_id"], name: "index_periodical_inspections_on_component_id"
 
+  create_table "quantities", force: :cascade do |t|
+    t.float    "number"
+    t.integer  "deteriorating_item_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "quantities", ["deteriorating_item_id"], name: "index_quantities_on_deteriorating_item_id"
+
   create_table "scheduled_inspections", force: :cascade do |t|
     t.integer  "component_id"
     t.integer  "flight_hours"
@@ -168,5 +204,11 @@ ActiveRecord::Schema.define(version: 20160313020351) do
   end
 
   add_index "twelve_months_inspections", ["component_id"], name: "index_twelve_months_inspections_on_component_id"
+
+  create_table "units", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

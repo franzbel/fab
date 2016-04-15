@@ -1,0 +1,127 @@
+<style>
+
+</style>
+<div class="container">
+  <% @items.each do |item| %>
+  <div class="row">
+    <div class="col-md-4">
+
+      <div class="row">
+        <div class="col-md-12">
+          <strong><%= item.name %></strong>
+
+        </div>
+      </div>
+      <div class="row">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>CODIGO</th>
+            <th>CANTIDAD</th>
+            <th>VENCIMIENTO</th>
+          </tr>
+
+          </thead>
+          <tbody>
+
+          <% item.quantities.each do |quantity| %>
+              <tr>
+                <td><strong>ABC-<%= quantity.id %></strong></td>
+                <td><%= quantity.number %></td>
+                <td><%= quantity.deteriorating_item.expiration_dates.find(quantity.id).date %></td>
+              </tr>
+
+          <% end %>
+
+          </tbody>
+        </table>
+      </div>
+
+
+      <% item.quantities.each do |quantity| %>
+          <%= content_tag(:div, '', :data => {:number => quantity.number}, class: 'quantities') %>
+      <% end %>
+      <% item.expiration_dates.each do |date| %>
+          <%= content_tag(:div, '', :data => {:date => date.date}, class: 'expiration-date') %>
+      <% end %>
+
+    </div>
+
+
+
+
+    <div class="col-md-5">
+      GRAFICAS DE CADUCIDAD
+      <div id="graph" style="height: 200px;"></div>
+    </div>
+    <div class="col-md-3">
+      CANTIDADES MINIMAS
+      <div id="minimum-quantity" style="height: 200px;"></div>
+    </div>
+  </div>
+  <% end %>
+
+</div>
+<script>
+  $(document).ready(function(){
+      Morris.Bar({
+
+          element: 'graph',
+          data: [
+              <% @items.first.expiration_dates.each do  |expiration|%>
+               {x: 'ABC-'+<%= expiration.id %>, y: <%= @items.first.days_from_alert %>, z: <%= expiration.days_from_alert %>, a: <%= expiration.days_from_alert %>-<%= @items.first.days_from_alert %>},
+              <% end %>
+//              {x: 'Q1', y: value_current_time, z: 2},
+//              {x: 'Q2', y: value_current_time, z: 1},
+//              {x: 'Q3', y: value_current_time, z: 2},
+//              {x: 'Q4', y: value_current_time, z: 4},
+          ],
+          hideHover:true,
+          xkey: 'x',
+          ykeys: ['y', 'z', 'a'],
+          labels: ['Dias desde la alerta hasta hoy', 'Dias desde la alerta hasta la expiracion', 'Dias restantes'],
+          barColors: function(row, series, type) {
+              if(series.key == 'y')
+              {
+                  return  '#0b62a4';
+              }
+              if(series.key == 'z')
+              {
+                  return  'red';
+              }
+              if(series.key == 'a')
+              {
+                  return  'green';
+              }
+          }
+//          stacked: true
+      });
+      Morris.Bar({
+          element: 'minimum-quantity',
+          data: [
+              {x: 'Aceite de proposito general', y: <%= @items.first.total_quantity %>, z: <%= @items.first.alert.minimum_quantity %>, a:<%= @items.first.total_quantity %>-<%= @items.first.alert.minimum_quantity %>},
+          ],
+          hideHover:true,
+          xkey: 'x',
+          ykeys: ['y', 'z', 'a'],
+          labels: ['Cantidad actual', 'Cantidad minima', 'Diferencia'],
+          barColors: function(row, series, type) {
+              if(series.key == 'y')
+              {
+                  return  '#0b62a4';
+              }
+              if(series.key == 'z')
+              {
+                  return  'red';
+              }
+              if(series.key == 'a')
+              {
+                  return  'green';
+              }
+          }
+//          stacked: true
+      });
+
+  });
+
+</script>
