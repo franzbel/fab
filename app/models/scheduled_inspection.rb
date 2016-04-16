@@ -42,9 +42,9 @@ class ScheduledInspection < ActiveRecord::Base
 # OJO: Estamos suponiendo una sola inspección ( inspection = component.intermediate_inspections.first)
   def intermediate_inspection?
     component = Component.find(self.component_id)
-    unless component.intermediate_inspections.empty?
+    unless component.intermediate_inspection.nil?
       flight_hours = component.flight_hours
-      inspection = component.intermediate_inspections.first
+      inspection = component.intermediate_inspection
       time_limit = inspection.time_limit
       alert_before = inspection.alert_before
       surplus = inspection.surplus
@@ -62,9 +62,9 @@ class ScheduledInspection < ActiveRecord::Base
   # OJO: Estamos suponiendo una sola inspección
   def supplementary_check_100?
     component = Component.find(self.component_id)
-    unless component.second_inspections.empty?
+    unless component.second_inspection.nil?
       flight_hours = component.flight_hours
-      inspection = component.second_inspections.first
+      inspection = component.second_inspection
       time_limit = inspection.time_limit
       alert_before = inspection.alert_before
       surplus = inspection.surplus
@@ -86,7 +86,7 @@ class ScheduledInspection < ActiveRecord::Base
   def calculate_sc_100
     component = Component.find(self.component_id)
     flight_hours = (component.flight_hours*60).to_i
-    inspection = component.second_inspections.first
+    inspection = component.second_inspection
     time_limit = inspection.time_limit*60
     alert_before = inspection.alert_before*60
     surplus = inspection.surplus*60
@@ -129,9 +129,9 @@ class ScheduledInspection < ActiveRecord::Base
   # OJO: Estamos suponiendo una sola inspección
   def supplementary_check_50?
     component = Component.find(self.component_id)
-    unless component.first_inspections.empty?
+    unless component.first_inspection.nil?
       flight_hours = component.flight_hours
-      inspection = component.first_inspections.first
+      inspection = component.first_inspection
       time_limit = inspection.time_limit
       alert_before = inspection.alert_before
       surplus = inspection.surplus
@@ -153,7 +153,7 @@ class ScheduledInspection < ActiveRecord::Base
   def calculate_sc_50
     component = Component.find(self.component_id)
     flight_hours = (component.flight_hours*60).to_i
-    inspection = component.first_inspections.first
+    inspection = component.first_inspection
     time_limit = inspection.time_limit*60
     alert_before = inspection.alert_before*60
     surplus = inspection.surplus*60
@@ -186,7 +186,7 @@ class ScheduledInspection < ActiveRecord::Base
   def new_row_sc_50?
     # si existe una inspección anterior calculada para el componente (una fila en scheduled_inspections)
     unless ScheduledInspection.find_by_component_id(self.component_id).nil?
-      # si las horas del componente es mayor al momento de la ultima inspeccion del componente
+      # si las horas del componente es mayor al momento de la ultima inspección del componente
       if (Component.find(self.component_id).flight_hours*60).to_i > ScheduledInspection.where('component_id==?',self.component_id).last.finish_at
         return true   # nueva fila
       else

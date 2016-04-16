@@ -1,0 +1,29 @@
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#special_tools">Herramientas especiales</a></li>
+    <li><a data-toggle="tab" href="#consumable_materials">Materiales consumibles</a></li>
+    <li><a data-toggle="tab" href="#job_setup">Configuracion de trabajo</a></li>
+    <li><a data-toggle="tab" href="#procedure">Procedimiento</a></li>
+    <li><a data-toggle="tab" href="#close_up">Tareas finales</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="special_tools" class="tab-pane fade in active">
+      <h2>Herramientas especiales</h2>
+      <% @tools.each do |tool| %>
+        <%= tool.name %> <br/>
+      <% end %>
+    </div>
+    <div id="consumable_materials" class="tab-pane fade">
+      <h2>Materiales consumibles</h2>
+    </div>
+    <div id="job_setup" class="tab-pane fade">
+      <h2>Configuracion</h2>
+    </div>
+    <div id="procedure" class="tab-pane fade">
+      <h2>Procedimiento</h2>
+    </div>
+    <div id="close_up" class="tab-pane fade">
+      <h2>Tareas finales</h2>
+    </div>
+  </div>
+</div>

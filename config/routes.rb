@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # get 'maintenances/index'
+
   get 'periodical_inspections/new'
 
   resources :catalogues
@@ -38,6 +40,12 @@ Rails.application.routes.draw do
   resources :scheduled_inspections
   resources :deteriorating_items
   resources :non_deteriorating_items
+
+  resources :maintenances do
+    member do
+      get 'procedure'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
