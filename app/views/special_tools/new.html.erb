@@ -8,7 +8,7 @@
   </ul>
 </div>
 <div class="container">
-  <%= form_tag special_tools_path, remote: true do  %>
+  <%= form_for @tool do |f| %>
       <div class="row">
         <div class="col-md-4 selects-cont">
           <div class="form-group dropdown-aircrafts">
@@ -29,21 +29,24 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="form-group">
-            <% @tools.each do |tool| %>
-                <%= fields_for 'tools[]', tool do |t| %>
+          <% @tools.each do |tool| %>
+              <%= f.fields_for 'tools[]', tool do |t| %>
+                  <div class="form-group">
                     <%= t.label :name, 'Herramienta' %>
                     <%= t.text_field :name, class:'form-control' %>
-                <% end %>
-            <% end %>
-          </div>
+                    <%= t.file_field :photo %>
+                  </div>
+
+              <% end %>
+          <% end %>
           <%= submit_tag 'Guardar', class:'btn btn-primary' %>
         </div>
         <div class="col-md-4">
           <p class="tools-list">HERRAMIENTAS</p>
         </div>
       </div>
-  <% end %>
+
+<% end %>
 </div>
 <script>
     $(document).ready(function(){

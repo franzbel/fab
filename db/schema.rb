@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329001855) do
+ActiveRecord::Schema.define(version: 20160416113036) do
 
   create_table "aircrafts", force: :cascade do |t|
     t.string   "plate_number"
@@ -173,8 +173,12 @@ ActiveRecord::Schema.define(version: 20160329001855) do
   create_table "special_tools", force: :cascade do |t|
     t.string   "name"
     t.integer  "inspection_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "special_tools", ["inspection_id"], name: "index_special_tools_on_inspection_id"

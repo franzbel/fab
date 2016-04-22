@@ -1,3 +1,11 @@
+<style>
+  /*.row{*/
+      /*border: 1px solid red;*/
+  /*}*/
+  /*.col-md-3, .col-md-4{*/
+      /*border: 1px solid blue;*/
+  /*}*/
+</style>
 <div class="container">
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#special_tools">Herramientas especiales</a></li>
@@ -10,7 +18,11 @@
     <div id="special_tools" class="tab-pane fade in active">
       <h2>Herramientas especiales</h2>
       <% @tools.each do |tool| %>
-        <%= tool.name %> <br/>
+          <div class="row">
+            <div class="col-md-3"><%= image_tag tool.photo.url(:medium) %></div>
+            <div class="col-md-3"><h4><%= tool.name %></h4></div>
+          </div>
+          <hr>
       <% end %>
     </div>
     <div id="consumable_materials" class="tab-pane fade">

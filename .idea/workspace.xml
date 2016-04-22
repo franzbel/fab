@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7727c1e-b4cb-49f2-8045-4e2164e46bec" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.generators" afterPath="$PROJECT_DIR$/.idea/.generators" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.rakeTasks" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations/Development__fab.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Development__fab.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations/Production__fab.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Production__fab.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/development.rb" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/fab.iml" afterPath="$PROJECT_DIR$/.idea/fab.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations/spec__fab.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/spec__fab.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations/test__fab.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/test__fab.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/medium/missing.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/original/missing.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/thumb/missing.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/special_tools/new.html.erb" afterPath="$PROJECT_DIR$/app/views/special_tools/new.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/maintenances/procedure.html.erb" afterPath="$PROJECT_DIR$/app/views/maintenances/procedure.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/special_tool.rb" afterPath="$PROJECT_DIR$/app/models/special_tool.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/special_tools_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/special_tools_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="fab.iws" />
@@ -62,52 +57,145 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="scheduled_inspections" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/c1fadd5/ef5f9627-ae4b-497d-9da5-2ac1797d938f/..scheduled_inspections">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
+      <file leaf-file-name="special_tool.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/special_tool.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="special_tools_controller.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/special_tools_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="procedure.html.erb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/maintenances/procedure.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.0">
+              <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RailsDependency/#fab" pinned="false" current-in-tab="true">
+        <entry file="uml://RailsDependency/#fab">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>RailsDependency</ID>
+              <OriginalElement>#fab</OriginalElement>
+              <nodes>
+                <node x="397.0" y="828.0">System</node>
+                <node x="0.0" y="1757.0">DeterioratingItem</node>
+                <node x="1241.0" y="264.0">ScheduledInspection</node>
+                <node x="1231.0" y="1440.0">FirstInspection</node>
+                <node x="0.0" y="882.0">Aircraft</node>
+                <node x="1231.0" y="1176.0">PeriodicalInspection</node>
+                <node x="714.0" y="1865.0">ExpirationDate</node>
+                <node x="1132.0" y="1709.0">NonDeterioratingItem</node>
+                <node x="1671.0" y="1044.0">SpecialTool</node>
+                <node x="283.0" y="1853.0">Quantity</node>
+                <node x="1231.0" y="504.0">IntermediateInspection</node>
+                <node x="1231.0" y="0.0">SecondInspection</node>
+                <node x="686.0" y="732.0">Component</node>
+                <node x="952.0" y="1709.0">Unit</node>
+                <node x="283.0" y="1709.0">Alert</node>
+                <node x="387.0" y="972.0">FlightSheet</node>
+                <node x="1231.0" y="768.0">TwelveMonthsInspection</node>
+                <node x="1281.0" y="1032.0">Inspection</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="System" target="Component">
+                  <point x="99.5" y="-0.0" />
+                  <point x="-232.5" y="-0.0" />
+                </edge>
+                <edge source="Component" target="FirstInspection">
+                  <point x="232.5" y="126.85714285714289" />
+                  <point x="-180.0" y="-0.0" />
+                </edge>
+                <edge source="Aircraft" target="FlightSheet">
+                  <point x="153.5" y="38.0" />
+                  <point x="-109.5" y="-0.0" />
+                </edge>
+                <edge source="Component" target="PeriodicalInspection">
+                  <point x="232.5" y="84.57142857142856" />
+                  <point x="-180.0" y="-0.0" />
+                </edge>
+                <edge source="Quantity" target="ExpirationDate">
+                  <point x="175.5" y="-0.0" />
+                  <point x="-96.5" y="-0.0" />
+                </edge>
+                <edge source="Component" target="TwelveMonthsInspection">
+                  <point x="232.5" y="-0.0" />
+                  <point x="-180.0" y="-0.0" />
+                </edge>
+                <edge source="Component" target="Inspection">
+                  <point x="232.5" y="42.28571428571422" />
+                  <point x="1231.0" y="1084.0" />
+                  <point x="-130.0" y="-0.0" />
+                </edge>
+                <edge source="Component" target="SecondInspection">
+                  <point x="232.5" y="-126.85714285714289" />
+                  <point x="-180.0" y="-0.0" />
+                </edge>
+                <edge source="Inspection" target="SpecialTool">
+                  <point x="130.0" y="-0.0" />
+                  <point x="-110.0" y="-0.0" />
+                </edge>
+                <edge source="DeterioratingItem" target="Alert">
+                  <point x="101.5" y="-38.0" />
+                  <point x="-175.5" y="-0.0" />
+                </edge>
+                <edge source="DeterioratingItem" target="Quantity">
+                  <point x="101.5" y="38.0" />
+                  <point x="-175.5" y="-0.0" />
+                </edge>
+                <edge source="Component" target="ScheduledInspection">
+                  <point x="232.5" y="-84.57142857142856" />
+                  <point x="-170.0" y="-0.0" />
+                </edge>
+                <edge source="Aircraft" target="System">
+                  <point x="153.5" y="-38.0" />
+                  <point x="-99.5" y="-0.0" />
+                </edge>
+                <edge source="Component" target="IntermediateInspection">
+                  <point x="232.5" y="-42.28571428571422" />
+                  <point x="-180.0" y="-0.0" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="0.7659079413252403" x="34.37181349887726" y="2068.1637886747076" />
+              <SelectedNodes>
+                <node>Inspection</node>
+              </SelectedNodes>
+              <Categories>
+                <Category>Association fields</Category>
+                <Category>Migration fields</Category>
+              </Categories>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="special_tools" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/c1fadd5/ef5f9627-ae4b-497d-9da5-2ac1797d938f/..special_tools">
           <provider editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="components" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/c1fadd5/ef5f9627-ae4b-497d-9da5-2ac1797d938f/..components">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
               <filtering enabled="true" />
-            </state>
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="development.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Gemfile" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Gemfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.47042254">
-              <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -120,9 +208,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/db/migrate/20160226173943_add_flight_hours_to_aircrafts.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20160226173626_add_flight_hours_to_components.rb" />
-        <option value="$PROJECT_DIR$/app/models/flight_sheet.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20160225145340_create_intermediate_inspections.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20160226233253_create_supplementary_checks_50.rb" />
         <option value="$PROJECT_DIR$/app/models/supplementary_check_50.rb" />
@@ -166,11 +251,14 @@
         <option value="$PROJECT_DIR$/app/views/maintenances/index.html.erb" />
         <option value="$PROJECT_DIR$/app/models/component.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/views/maintenances/procedure.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/maintenances_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/scheduled_inspection.rb" />
         <option value="$PROJECT_DIR$/config/environments/development.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/app/views/special_tools/new.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/special_tools_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/special_tool.rb" />
+        <option value="$PROJECT_DIR$/app/views/maintenances/procedure.html.erb" />
       </list>
     </option>
   </component>
@@ -183,9 +271,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="24" />
+    <option name="y" value="-4" />
     <option name="width" value="1301" />
-    <option name="height" value="744" />
+    <option name="height" value="772" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -229,6 +317,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="RailsProjectView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -248,56 +338,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="db" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="environments" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="RailsProjectView" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -309,6 +351,13 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="Ruby.ViewRefParam.DefaultExtension" value="html.erb" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images/thumb" />
+      <recent name="$PROJECT_DIR$/public/images/original" />
+      <recent name="$PROJECT_DIR$/public/images/medium" />
+    </key>
   </component>
   <component name="RunManager" selected="IRB console.Rails console: fab">
     <configuration default="false" name="Rails console: fab" type="IrbRunConfigurationType" factoryName="IRB console" temporary="true">
@@ -614,28 +663,28 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
+    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26772907" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2733068" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Metrics" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Metrics" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43035993" sideWeight="0.53025717" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32828686" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32744783" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.48638427" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.42962962" sideWeight="0.4697428" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42962962" sideWeight="0.4697428" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.48638427" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32707354" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32592592" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -681,7 +730,7 @@
     <option name="showOnlyWarnings" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/maintenances_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/maintenances/procedure.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -689,26 +738,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/scheduled_inspection.rb">
-      <provider selected="true" editor-type-id="text-editor">
+    <entry file="dbDummy://dbtable:/c1fadd5/ef5f9627-ae4b-497d-9da5-2ac1797d938f/..special_tools">
+      <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="207" column="34" selection-start-line="207" selection-start-column="34" selection-end-line="207" selection-end-column="34" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/maintenances/procedure.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/components/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="38" selection-start-line="73" selection-start-column="38" selection-end-line="73" selection-end-column="38" />
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -912,103 +951,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.91071427">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://RailsDependency/#fab">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>RailsDependency</ID>
-          <OriginalElement>#fab</OriginalElement>
-          <nodes>
-            <node x="351.0" y="672.0">System</node>
-            <node x="0.0" y="1641.0">DeterioratingItem</node>
-            <node x="671.0" y="1105.5">ScheduledInspection</node>
-            <node x="0.0" y="723.5">Aircraft</node>
-            <node x="1192.25" y="112.0">FirstInspection</node>
-            <node x="1201.0" y="1139.5">PeriodicalInspection</node>
-            <node x="630.0" y="1606.0">ExpirationDate</node>
-            <node x="726.9131840796019" y="70.62603648424545">SpecialTool</node>
-            <node x="1002.0" y="1595.0">NonDeterioratingItem</node>
-            <node x="264.0" y="1595.0">Quantity</node>
-            <node x="1204.7644278606965" y="608.6053897180761">IntermediateInspection</node>
-            <node x="1206.1753731343283" y="372.2541459369818">SecondInspection</node>
-            <node x="615.5" y="584.0">Component</node>
-            <node x="841.0" y="1595.0">Unit</node>
-            <node x="341.0" y="808.0">FlightSheet</node>
-            <node x="264.0" y="1731.0">Alert</node>
-            <node x="1202.7228855721391" y="862.6735489220564">TwelveMonthsInspection</node>
-            <node x="708.7664179104477" y="279.5516583747927">Inspection</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="System" target="Component">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="Component" target="FirstInspection">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="Aircraft" target="FlightSheet">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="Component" target="PeriodicalInspection">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="Quantity" target="ExpirationDate">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="Component" target="TwelveMonthsInspection">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="Component" target="Inspection">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="Component" target="SecondInspection">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="DeterioratingItem" target="Alert">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="Inspection" target="SpecialTool">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="DeterioratingItem" target="Quantity">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="Component" target="ScheduledInspection">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="Aircraft" target="System">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="Component" target="IntermediateInspection">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="0.8" x="674.0" y="579.0" />
-          <SelectedNodes>
-            <node>Inspection</node>
-          </SelectedNodes>
-          <Categories>
-            <Category>Migration fields</Category>
-            <Category>Association fields</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
@@ -1044,70 +986,26 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/c1fadd5/ef5f9627-ae4b-497d-9da5-2ac1797d938f/..aircrafts">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/c1fadd5/ef5f9627-ae4b-497d-9da5-2ac1797d938f/..systems">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/maintenances/procedure.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/c1fadd5/ef5f9627-ae4b-497d-9da5-2ac1797d938f/..scheduled_inspections">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/c1fadd5/ef5f9627-ae4b-497d-9da5-2ac1797d938f/..components">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1115,18 +1013,208 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.703259">
           <caret line="96" column="16" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20160416113036_add_attachment_photo_to_special_tools.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c1fadd5/ef5f9627-ae4b-497d-9da5-2ac1797d938f/..components">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c1fadd5/ef5f9627-ae4b-497d-9da5-2ac1797d938f/..scheduled_inspections">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5943662">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.47042254">
-          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.6957747">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/special_tools/create.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c1fadd5/ef5f9627-ae4b-497d-9da5-2ac1797d938f/..special_tools">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/system/special_tools/photos/000/000/041/medium/herramienta1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/special_tools/new.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61165047">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/special_tool.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/special_tools_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/maintenances/procedure.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.0">
+          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://RailsDependency/#fab">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>RailsDependency</ID>
+          <OriginalElement>#fab</OriginalElement>
+          <nodes>
+            <node x="397.0" y="828.0">System</node>
+            <node x="0.0" y="1757.0">DeterioratingItem</node>
+            <node x="1241.0" y="264.0">ScheduledInspection</node>
+            <node x="1231.0" y="1440.0">FirstInspection</node>
+            <node x="0.0" y="882.0">Aircraft</node>
+            <node x="1231.0" y="1176.0">PeriodicalInspection</node>
+            <node x="714.0" y="1865.0">ExpirationDate</node>
+            <node x="1132.0" y="1709.0">NonDeterioratingItem</node>
+            <node x="1671.0" y="1044.0">SpecialTool</node>
+            <node x="283.0" y="1853.0">Quantity</node>
+            <node x="1231.0" y="504.0">IntermediateInspection</node>
+            <node x="1231.0" y="0.0">SecondInspection</node>
+            <node x="686.0" y="732.0">Component</node>
+            <node x="952.0" y="1709.0">Unit</node>
+            <node x="283.0" y="1709.0">Alert</node>
+            <node x="387.0" y="972.0">FlightSheet</node>
+            <node x="1231.0" y="768.0">TwelveMonthsInspection</node>
+            <node x="1281.0" y="1032.0">Inspection</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="System" target="Component">
+              <point x="99.5" y="-0.0" />
+              <point x="-232.5" y="-0.0" />
+            </edge>
+            <edge source="Component" target="FirstInspection">
+              <point x="232.5" y="126.85714285714289" />
+              <point x="-180.0" y="-0.0" />
+            </edge>
+            <edge source="Aircraft" target="FlightSheet">
+              <point x="153.5" y="38.0" />
+              <point x="-109.5" y="-0.0" />
+            </edge>
+            <edge source="Component" target="PeriodicalInspection">
+              <point x="232.5" y="84.57142857142856" />
+              <point x="-180.0" y="-0.0" />
+            </edge>
+            <edge source="Quantity" target="ExpirationDate">
+              <point x="175.5" y="-0.0" />
+              <point x="-96.5" y="-0.0" />
+            </edge>
+            <edge source="Component" target="TwelveMonthsInspection">
+              <point x="232.5" y="-0.0" />
+              <point x="-180.0" y="-0.0" />
+            </edge>
+            <edge source="Component" target="Inspection">
+              <point x="232.5" y="42.28571428571422" />
+              <point x="1231.0" y="1084.0" />
+              <point x="-130.0" y="-0.0" />
+            </edge>
+            <edge source="Component" target="SecondInspection">
+              <point x="232.5" y="-126.85714285714289" />
+              <point x="-180.0" y="-0.0" />
+            </edge>
+            <edge source="Inspection" target="SpecialTool">
+              <point x="130.0" y="-0.0" />
+              <point x="-110.0" y="-0.0" />
+            </edge>
+            <edge source="DeterioratingItem" target="Alert">
+              <point x="101.5" y="-38.0" />
+              <point x="-175.5" y="-0.0" />
+            </edge>
+            <edge source="DeterioratingItem" target="Quantity">
+              <point x="101.5" y="38.0" />
+              <point x="-175.5" y="-0.0" />
+            </edge>
+            <edge source="Component" target="ScheduledInspection">
+              <point x="232.5" y="-84.57142857142856" />
+              <point x="-170.0" y="-0.0" />
+            </edge>
+            <edge source="Aircraft" target="System">
+              <point x="153.5" y="-38.0" />
+              <point x="-99.5" y="-0.0" />
+            </edge>
+            <edge source="Component" target="IntermediateInspection">
+              <point x="232.5" y="-42.28571428571422" />
+              <point x="-180.0" y="-0.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.7659079413252403" x="34.37181349887726" y="2068.1637886747076" />
+          <SelectedNodes>
+            <node>Inspection</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Association fields</Category>
+            <Category>Migration fields</Category>
+          </Categories>
         </state>
       </provider>
     </entry>
